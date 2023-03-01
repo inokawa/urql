@@ -26,7 +26,7 @@ export const makeFetchSource = (
   return make<OperationResult>(({ next, complete }) => {
     const abortController =
       typeof AbortController !== 'undefined' ? new AbortController() : null;
-    if (abortController) {
+    if (abortController && !fetchOptions.signal) {
       fetchOptions.signal = abortController.signal;
     }
 
